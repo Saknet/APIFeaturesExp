@@ -7,7 +7,7 @@ services:
       - ./data/jateastiat.json:/pygeoapi/tests/data/jateastiat.json
       - ./data/alatyyppi_Jateastiat.gpkg:/pygeoapi/tests/data/alatyyppi_Jateastiat.gpkg
     ports:
-      - "5000:5000"
+      - '5000:80'
 
   postgis_db:
     image: postgis/postgis:13-master
@@ -31,7 +31,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: rootpassword
     ports:
-      - 27017:27017
+      - '27017:27017'
     volumes:
       - mongodb-data:/data/db
 
