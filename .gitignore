@@ -1,0 +1,4 @@
+my.config.yml
+.env
+.dockerignore
+.DS_Store
