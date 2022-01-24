@@ -123,10 +123,12 @@ resources:
                 end: 2021-10-30T08:57:29Z
         providers:
           - type: feature
-            name: SQLiteGPKG
-            data: ./data/alatyyppi_Jäteastiat.gpkg
+            name: CSV
+            data: ./data/alatyyppi_Jateastiat.csv
             id_field: fid
-            table: alatyyppi_Jäteastiat
+            geometry:
+                x_field: x
+                y_field: y
 
     obs:
         type: collection
