@@ -4,7 +4,8 @@ services:
     image: geopython/pygeoapi:latest
     volumes:
       - ./my.config.yml:/pygeoapi/local.config.yml
-      - ./data/alatyyppi_Jateastiat.csv:/data/alatyyppi_Jateastiat.csv
+      - ./data/jateastiat.json:/pygeoapi/tests/data/jateastiat.json
+      - ./data/alatyyppi_Jateastiat.gpkg:/pygeoapi/tests/data/alatyyppi_Jateastiat.gpkg
     ports:
       - "5000:80"
 
