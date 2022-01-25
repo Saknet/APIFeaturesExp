@@ -41,7 +41,7 @@ server:
         - fr-CA
     # cors: true
     pretty_print: true
-    limit: 10
+    limit: 1000
     # templates:
       # path: /path/to/Jinja2/templates
       # static: /path/to/static/folder # css/js/img
@@ -101,9 +101,9 @@ metadata:
         role: pointOfContact
 
 resources:
-    cityfurniture:
+    jateastiatjson:
         type: collection
-        title: CityFurniture
+        title: jateastiat
         description: Helsinki trash can
         keywords:
             - features
@@ -127,9 +127,9 @@ resources:
             data: tests/data/jateastiat.json
             id_field: fid
 
-    cityfurniturelite:
+    jateastiatpackage:
         type: collection
-        title: CityFurniture
+        title: jateastiat
         description: Helsinki trash can
         keywords:
             - features
@@ -143,7 +143,7 @@ resources:
         extents:
             spatial:
                 bbox: [-16.1, 32.88, 40.18, 84.17]
-                crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+                crs: http://www.opengis.net/def/crs/EPSG/0/3879
             temporal:
                 begin: 2000-10-30T18:24:39Z
                 end: 2022-10-30T08:57:29Z
@@ -153,6 +153,58 @@ resources:
             data: tests/data/alatyyppi_Jateastiat.gpkg
             id_field: fid
             table: alatyyppi_Jäteastiat            
+
+    taydennysrakentaminen3d:
+        type: collection
+        title: Täydynnysrakentaminen3D
+        description: SeutuRAMAVA with 3d building
+        keywords:
+            - landuse
+            - seutuRAMAVA
+        links:
+            - type: text/html
+              rel: canonical
+              title: data
+              href: 
+              hreflang: en-US
+        extents:
+            spatial:
+                bbox: [-16.1, 32.88, 40.18, 84.17]
+                crs: http://www.opengis.net/def/crs/EPSG/0/3879
+            temporal:
+                begin: 2000-10-30T18:24:39Z
+                end: 2022-10-30T08:57:29Z
+        providers:
+          - type: feature
+            name: GeoJSON
+            data: tests/data/tayd_3d.json
+            id_field: fid
+
+    taydennysrakentaminencitywide:
+        type: collection
+        title: Täydynnysrakentaminen citywide
+        description: Citywide SeutuRAMAVA with 2d buildings
+        keywords:
+            - landuse
+            - seutuRAMAVA
+        links:
+            - type: text/html
+              rel: canonical
+              title: data
+              href: 
+              hreflang: en-US
+        extents:
+            spatial:
+                bbox: [-16.1, 32.88, 40.18, 84.17]
+                crs: http://www.opengis.net/def/crs/EPSG/0/3879
+            temporal:
+                begin: 2000-10-30T18:24:39Z
+                end: 2022-10-30T08:57:29Z
+        providers:
+          - type: feature
+            name: GeoJSON
+            data: tests/data/tayd_citywide.json
+            id_field: fid
 
     obs:
         type: collection

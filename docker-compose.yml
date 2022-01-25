@@ -6,6 +6,8 @@ services:
       - ./my.config.yml:/pygeoapi/local.config.yml
       - ./data/jateastiat.json:/pygeoapi/tests/data/jateastiat.json
       - ./data/alatyyppi_Jateastiat.gpkg:/pygeoapi/tests/data/alatyyppi_Jateastiat.gpkg
+      - ./data/tayd_3d.json:/pygeoapi/tests/data/tayd_3d.json
+      - ./data/tayd_citywide.json:/pygeoapi/tests/data/tayd_citywide.json
     ports:
       - '5000:80'
 
