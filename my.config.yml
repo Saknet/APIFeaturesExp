@@ -31,7 +31,7 @@ server:
     bind:
         host: 0.0.0.0
         port: 5000
-    url: https://geo.fvh.fi
+    url: https://geo.fvh.fi/features
     mimetype: application/json; charset=UTF-8
     encoding: utf-8
     gzip: false
