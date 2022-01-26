@@ -126,6 +126,11 @@ resources:
             name: GeoJSON
             data: tests/data/jateastiat.json
             id_field: fid
+            extensions:
+                type: CQL
+                filters:
+                    - cql-text
+                    - cql-json
 
     jateastiatpackage:
         type: collection
@@ -142,7 +147,7 @@ resources:
               hreflang: en-US
         extents:
             spatial:
-                bbox: [-16.1, 32.88, 40.18, 84.17]
+                bbox: [24.80, 60.10, 25.32, 60.30]
                 crs: http://www.opengis.net/def/crs/EPSG/0/3879
             temporal:
                 begin: 2000-10-30T18:24:39Z
@@ -153,6 +158,11 @@ resources:
             data: tests/data/alatyyppi_Jateastiat.gpkg
             id_field: fid
             table: alatyyppi_Jäteastiat            
+            extensions:
+                type: CQL
+                filters:
+                    - cql-text
+                    - cql-json
 
     taydennysrakentaminen3d:
         type: collection
@@ -169,7 +179,7 @@ resources:
               hreflang: en-US
         extents:
             spatial:
-                bbox: [-16.1, 32.88, 40.18, 84.17]
+                bbox: [24.80, 60.10, 25.32, 60.30]
                 crs: http://www.opengis.net/def/crs/EPSG/0/3879
             temporal:
                 begin: 2000-10-30T18:24:39Z
@@ -179,6 +189,11 @@ resources:
             name: GeoJSON
             data: tests/data/tayd_3d.json
             id_field: fid
+            extensions:
+                type: CQL
+                filters:
+                    - cql-text
+                    - cql-json
 
     taydennysrakentaminencitywide:
         type: collection
@@ -195,7 +210,7 @@ resources:
               hreflang: en-US
         extents:
             spatial:
-                bbox: [-16.1, 32.88, 40.18, 84.17]
+                bbox: [24.80, 60.10, 25.32, 60.30]
                 crs: http://www.opengis.net/def/crs/EPSG/0/3879
             temporal:
                 begin: 2000-10-30T18:24:39Z
@@ -205,6 +220,11 @@ resources:
             name: GeoJSON
             data: tests/data/tayd_citywide.json
             id_field: fid
+            extensions:
+                type: CQL
+                filters:
+                    - cql-text
+                    - cql-json
 
     obs:
         type: collection
@@ -244,6 +264,11 @@ resources:
               geometry:
                   x_field: long
                   y_field: lat
+              extensions:
+                  type: CQL
+                  filters:
+                    - cql-text
+                    - cql-json
 
     lakes:
         type: collection
