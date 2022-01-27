@@ -1,16 +1,5 @@
 version: "3"
 services:
-  pygeoapi:
-    image: geopython/pygeoapi:latest
-    volumes:
-      - ./my.config.yml:/pygeoapi/local.config.yml
-      - ./data/jateastiat.json:/pygeoapi/tests/data/jateastiat.json
-      - ./data/alatyyppi_Jateastiat.gpkg:/pygeoapi/tests/data/alatyyppi_Jateastiat.gpkg
-      - ./data/tayd_3d.json:/pygeoapi/tests/data/tayd_3d.json
-      - ./data/tayd_citywide.json:/pygeoapi/tests/data/tayd_citywide.json
-    ports:
-      - '5000:80'
-
   postgis_db:
     image: postgis/postgis:13-master
     environment:
@@ -22,10 +11,16 @@ services:
       options:
         max-size: 10m
         max-file: "3"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 60s
+      timeout: 15s
+      retries: 5  
     ports:
-      - '5431:5431'
+      - '5432:5432'
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
+      - ./sql:/docker-entrypoint-initdb.d
 
   mongo_db:
     image: mongo:latest
@@ -36,6 +31,20 @@ services:
       - '27017:27017'
     volumes:
       - mongodb-data:/data/db
+
+  pygeoapi:
+    image: geopython/pygeoapi:latest
+    volumes:
+      - ./my.config.yml:/pygeoapi/local.config.yml
+      - ./data/jateastiat.json:/pygeoapi/tests/data/jateastiat.json
+      - ./data/alatyyppi_Jateastiat.gpkg:/pygeoapi/tests/data/alatyyppi_Jateastiat.gpkg
+      - ./data/tayd_3d.json:/pygeoapi/tests/data/tayd_3d.json
+      - ./data/tayd_citywide.json:/pygeoapi/tests/data/tayd_citywide.json
+    depends_on:
+      postgis_db:
+        condition: service_healthy
+    ports:
+      - '5000:80'      
 
 volumes:
   mongodb-data:

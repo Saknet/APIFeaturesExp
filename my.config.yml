@@ -31,7 +31,7 @@ server:
     bind:
         host: 0.0.0.0
         port: 5000
-    url: https://geo.fvh.fi/features
+    url: http://localhost:5000/
     mimetype: application/json; charset=UTF-8
     encoding: utf-8
     gzip: false
@@ -101,6 +101,45 @@ metadata:
         role: pointOfContact
 
 resources:
+    featureofinterest:
+        type: collection
+        title: Features of interest
+        description: Features of interest
+        keywords:
+            - features
+            - sensorthings
+            - feature of interest
+        links:
+            - type: text/html
+              rel: canonical
+              title: data
+              href: 
+              hreflang: en-US
+        extents:
+            spatial:
+                bbox: [24.80, 60.10, 25.32, 60.30]
+                crs: http://www.opengis.net/def/crs/EPSG/0/3879
+            temporal:
+                begin: 2000-10-30T18:24:39Z
+                end: 2022-10-30T08:57:29Z
+        providers:
+            - type: feature
+              name: PostgreSQL
+              data:
+                host: postgis_db
+                dbname: public
+                user: postgres
+                password: postgres
+                search_path: [public]
+              id_field: id
+              table: featureofinterest
+              geom_field: feature
+              extensions:
+                type: CQL
+                filters:
+                    - cql-text
+                    - cql-json
+
     jateastiatjson:
         type: collection
         title: jateastiat
@@ -116,7 +155,7 @@ resources:
               hreflang: en-US
         extents:
             spatial:
-                bbox: [-16.1, 32.88, 40.18, 84.17]
+                bbox: [24.80, 60.10, 25.32, 60.30]
                 crs: http://www.opengis.net/def/crs/EPSG/0/3879
             temporal:
                 begin: 2000-10-30T18:24:39Z
@@ -153,14 +192,14 @@ resources:
                 begin: 2000-10-30T18:24:39Z
                 end: 2022-10-30T08:57:29Z
         providers:
-          - type: feature
-            name: SQLiteGPKG
-            data: tests/data/alatyyppi_Jateastiat.gpkg
-            id_field: fid
-            table: alatyyppi_Jäteastiat            
-            extensions:
-                type: CQL
-                filters:
+            - type: feature
+              name: SQLiteGPKG
+              data: tests/data/alatyyppi_Jateastiat.gpkg
+              id_field: fid
+              table: alatyyppi_Jäteastiat            
+              extensions:
+                - type: CQL
+                  filters:
                     - cql-text
                     - cql-json
 
@@ -190,8 +229,8 @@ resources:
             data: tests/data/tayd_3d.json
             id_field: fid
             extensions:
-                type: CQL
-                filters:
+                - type: CQL
+                  filters:
                     - cql-text
                     - cql-json
 
@@ -216,13 +255,13 @@ resources:
                 begin: 2000-10-30T18:24:39Z
                 end: 2022-10-30T08:57:29Z
         providers:
-          - type: feature
-            name: GeoJSON
-            data: tests/data/tayd_citywide.json
-            id_field: fid
-            extensions:
-                type: CQL
-                filters:
+            - type: feature
+              name: GeoJSON
+              data: tests/data/tayd_citywide.json
+              id_field: fid
+              extensions:
+                - type: CQL
+                  filters:
                     - cql-text
                     - cql-json
 
@@ -265,7 +304,7 @@ resources:
                   x_field: long
                   y_field: lat
               extensions:
-                  type: CQL
+                - type: CQL
                   filters:
                     - cql-text
                     - cql-json
@@ -304,6 +343,11 @@ resources:
               data: tests/data/ne_110m_lakes.geojson
               id_field: id
               title_field: name
+              extensions:
+                - type: CQL
+                  filters:
+                    - cql-text
+                    - cql-json              
 
     gdps-temperature:
         type: collection
