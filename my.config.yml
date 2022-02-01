@@ -31,7 +31,7 @@ server:
     bind:
         host: 0.0.0.0
         port: 5000
-    url: https://geo.fvh.fi/features
+    url: ${URL}
     mimetype: application/json; charset=UTF-8
     encoding: utf-8
     gzip: false
@@ -41,7 +41,7 @@ server:
         - fr-CA
     # cors: true
     pretty_print: true
-    limit: 100000
+    limit: 1000
     # templates:
       # path: /path/to/Jinja2/templates
       # static: /path/to/static/folder # css/js/img
@@ -127,9 +127,9 @@ resources:
               name: PostgreSQL
               data:
                 host: postgis_db
-                dbname: public
-                user: postgres
-                password: postgres
+                dbname: ${DB_GIS_NAME}
+                user: ${DB_GIS_USER}
+                password: ${DB_GIS_PASSWORD}
                 search_path: [public]
               id_field: id
               table: featureofinterest

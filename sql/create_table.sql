@@ -30,3 +30,9 @@ CREATE TABLE IF NOT EXISTS featureofinterest (
     properties jsonb,
     PRIMARY KEY (id)
 );
+
+CREATE TABLE IF NOT EXISTS observedfeature (
+	id bigserial NOT NULL,
+    feature geometry NOT NULL,
+    PRIMARY KEY (id)
+);
