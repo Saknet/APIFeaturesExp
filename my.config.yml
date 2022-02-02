@@ -139,6 +139,45 @@ resources:
                 filters:
                     - cql-text
                     - cql-json
+    
+    observedfeature:
+        type: collection
+        title: observed feature
+        description: Observed area of datastream in sensorthings
+        keywords:
+            - observedarea
+            - sensorthings
+            - feature of interest
+        links:
+            - type: text/html
+              rel: canonical
+              title: data
+              href: 
+              hreflang: en-US
+        extents:
+            spatial:
+                bbox: [24.80, 60.10, 25.32, 60.30]
+                crs: http://www.opengis.net/def/crs/EPSG/0/3879
+            temporal:
+                begin: 2000-10-30T18:24:39Z
+                end: 2022-10-30T08:57:29Z
+        providers:
+            - type: feature
+              name: PostgreSQL
+              data:
+                host: postgis_db
+                dbname: ${DB_GIS_NAME}
+                user: ${DB_GIS_USER}
+                password: ${DB_GIS_PASSWORD}
+                search_path: [public]
+              id_field: id
+              table: observedfeature
+              geom_field: feature
+              extensions:
+                type: CQL
+                filters:
+                    - cql-text
+                    - cql-json
 
     jateastiatjson:
         type: collection
@@ -234,36 +273,36 @@ resources:
                     - cql-text
                     - cql-json
 
-    taydennysrakentaminencitywide:
-        type: collection
-        title: Täydynnysrakentaminen citywide
-        description: Citywide SeutuRAMAVA with 2d buildings
-        keywords:
-            - landuse
-            - seutuRAMAVA
-        links:
-            - type: text/html
-              rel: canonical
-              title: data
-              href: 
-              hreflang: en-US
-        extents:
-            spatial:
-                bbox: [24.80, 60.10, 25.32, 60.30]
-                crs: http://www.opengis.net/def/crs/EPSG/0/3879
-            temporal:
-                begin: 2000-10-30T18:24:39Z
-                end: 2022-10-30T08:57:29Z
-        providers:
-            - type: feature
-              name: GeoJSON
-              data: tests/data/tayd_citywide.json
-              id_field: fid
-              extensions:
-                - type: CQL
-                  filters:
-                    - cql-text
-                    - cql-json
+    # taydennysrakentaminencitywide:
+    #     type: collection
+    #     title: Täydynnysrakentaminen citywide
+    #     description: Citywide SeutuRAMAVA with 2d buildings
+    #     keywords:
+    #         - landuse
+    #         - seutuRAMAVA
+    #     links:
+    #         - type: text/html
+    #           rel: canonical
+    #           title: data
+    #           href: 
+    #           hreflang: en-US
+    #     extents:
+    #         spatial:
+    #             bbox: [24.80, 60.10, 25.32, 60.30]
+    #             crs: http://www.opengis.net/def/crs/EPSG/0/3879
+    #         temporal:
+    #             begin: 2000-10-30T18:24:39Z
+    #             end: 2022-10-30T08:57:29Z
+    #     providers:
+    #         - type: feature
+    #           name: GeoJSON
+    #           data: tests/data/tayd_citywide.json
+    #           id_field: fid
+    #           extensions:
+    #             - type: CQL
+    #               filters:
+    #                 - cql-text
+    #                 - cql-json
 
     obs:
         type: collection
